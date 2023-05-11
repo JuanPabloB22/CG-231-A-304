@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PerspectiveCamera</title>
+        <style>
+            html, body { margin: 0; padding: 0; overflow: hidden; }
+            #text {
+                position: absolute;
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="text">Perspectiva<br/>
+            
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r94/three.min.js"></script>
+    <script>
+        function poligono(nlados, radio) {
+            const vertices = [];
+            const ang = 2*Math.PI/nlados;
+            for (i=0; i<=nlados; i++) {
+                vertices.push([radio*Math.cos(i*ang), radio*Math.sin(i*ang)]);
+            }
+            return vertices;
+        }
+
+        function poliedro(nlados, radio, altura) {
+            const vertices  = [];
+                
+            return vertices;
+        }  
+        
+
+        scene = new THREE.Scene();
+        camera = new THREE.OrthographicCamera( 13 / - 2, 11/ 2, 5/ 2, 10 / - 2, 20, 800 );    
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0x000000, 1.0);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        
+
+        //Cámara
+        camera.position.x = 150; 
+        camera.position.y = 200;
+        camera.position.z = 400;
+        camera.lookAt(scene.position);
+        document.body.appendChild(renderer.domElement);
+
+
+        var color = 0xff0000;
+        var material = new THREE.LineBasicMaterial({ color: color });
+        var cubito = cubo([0,0,0],lado,0xff0000,material);
+       
+
+        // Agregar las ayudas y cubos al escenario 
+       
+        scene.add(cubito);
+        
+        renderer.render(scene,camera)
+
+    </script>
+  </body>
+
+</html>
